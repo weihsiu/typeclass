@@ -17,6 +17,8 @@ object Test extends App {
 //      def findHole(x: Rabbit) = "Rabbit found the hole in inner Test object"
 //    }
   
+//    def rabbitHoleInHolePackage = disabled // shadows the typeclass instance in the package object
+    
     println(findHole(Rabbit()))
     
     println(findHole(Squirrel()))

@@ -7,7 +7,9 @@ object Serializables extends App {
   case class Item(name: String, price: Int, quantity: Int)
   case class Order(customer: String, date: Date, items: Set[Item])
   
-  val order = Order("Walter", new Date, Set(Item("BigMac", 100, 1), Item("Coke", 30, 1)))
+  val item1 = Item("BigMac", 100, 1)
+  val item2 = Item("Coke", 30, 1)
+  val order = Order("Walter", new Date, Set(item1, item2))
   
   object UseOverloading {
     def serialize(item: Item): String = ???
@@ -54,9 +56,11 @@ object Serializables extends App {
     def serialize[A](x: A)(implicit s: Serializable[A]): String = s.serialize(x)
     
 //    def implicitly[A](implicit x: A): A = x
-    
 //    def serialize[A : Serializable](x: A): String = implicitly[Serializable[A]].serialize(x)
   }
   
-  UseTypeclass.serialize(order)
+  import UseTypeclass.serialize
+  
+  serialize(item1)
+  serialize(order)
 }

@@ -9,7 +9,7 @@ object Ords extends App {
   }
   
   object Eq {
-    implicit def DefaultEq[T] = new Eq[T] {
+    implicit def AnyEq[T] = new Eq[T] {
       def equal(a: T, b: T) = a == b
     }
   }

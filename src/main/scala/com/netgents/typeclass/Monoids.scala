@@ -69,9 +69,6 @@ object Monoids extends App {
   assert(append(Some(123), None) == Some(123))
   assert(append(Some(123): Option[Int], Some(456)) == Some(579))
   
-  assert(concat(List(Some(1), Some(2), None, Some(3))) == Some(6))
-  assert(concat(List(None, Some("a"), Some("b"), Some("c"))) == Some("abc"))
-  
   implicit class ToOption[A](x: A) {
     def some: Option[A] = Some(x)
   }
@@ -79,6 +76,9 @@ object Monoids extends App {
   
   assert(append(123.some, 456.some) == Some(579))
   assert(append(123.some, none) == Some(123))
+  
+  assert(concat(List(Some(1), Some(2), None, Some(3))) == Some(6))
+  assert(concat(List(None, Some("a"), Some("b"), Some("c"))) == Some("abc"))
   
   def getFirst[A](xs: List[Option[A]]): Option[A] = concat(xs.map(First(_))).getFirst
   

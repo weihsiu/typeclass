@@ -1,8 +1,6 @@
-package com.netgents.typeclass.test
+package com.netgents.typeclass.hole
 
 object Test extends App {
-  
-  import com.netgents.typeclass.hole.{Hole, Rabbit, Squirrel, findHole}
   
 //  implicit val rabbitHoleInOuterTest = new Hole[Rabbit] {
 //    def findHole(x: Rabbit) = "Rabbit found the hole in outer Test object"

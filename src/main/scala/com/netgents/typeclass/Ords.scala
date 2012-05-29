@@ -26,7 +26,7 @@ object Ords extends App {
   
   assert(1 == "a")
   assert(1 === 1)
-  //assert(1 === "a")
+//  assert(1 === "a")
   
   trait Ord[T] extends Eq[T] {
     def compare(a: T, b: T): Boolean // returns true if a <= b, false otherwise
@@ -34,7 +34,7 @@ object Ords extends App {
   }
   
   object Ord {
-    //def apply[T : Ord] = implicitly[Ord[T]]
+    def apply[T : Ord] = implicitly[Ord[T]]
     implicit object IntOrd extends Ord[Int] {
       def compare(a: Int, b: Int) = a <= b
     }
@@ -47,8 +47,8 @@ object Ords extends App {
     }
   }
   
-  def cmp[T : Ord](a: T, b: T) = implicitly[Ord[T]].compare(a, b)
-  //def cmp[T : Ord](a: T, b: T) = Ord[T].compare(a, b)
+//  def cmp[T : Ord](a: T, b: T) = implicitly[Ord[T]].compare(a, b)
+  def cmp[T : Ord](a: T, b: T) = Ord[T].compare(a, b)
   
   // comparing Ints
   assert(cmp(1, 2) === true)

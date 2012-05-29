@@ -53,10 +53,10 @@ object Serializables extends App {
         def serialize(x: Order) = ???
       }
     }
-    def serialize[A](x: A)(implicit s: Serializable[A]): String = s.serialize(x)
+//    def serialize[A](x: A)(implicit s: Serializable[A]): String = s.serialize(x)
     
 //    def implicitly[A](implicit x: A): A = x
-//    def serialize[A : Serializable](x: A): String = implicitly[Serializable[A]].serialize(x)
+    def serialize[A : Serializable](x: A): String = implicitly[Serializable[A]].serialize(x)
   }
   
   import UseTypeclass.serialize
